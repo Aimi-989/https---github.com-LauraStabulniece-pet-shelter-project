@@ -1,0 +1,22 @@
+service: api-first
+frameworkVersion: '3'
+
+plugins:
+- serverless-offline
+
+provider:
+  name: aws-serverless
+  runtime: nodejs14.x
+  stage: dev
+  region: us-east-1
+
+functions:
+  hello:
+    handler: handler.hello
+    events:
+      - httpApi:
+          path: /
+          method: get
+          - httpApi:
+          path: post-api
+          method: post
